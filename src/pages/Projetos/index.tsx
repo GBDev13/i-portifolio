@@ -6,6 +6,7 @@ import { ProjetoContainer } from "../../styles/ProjetoStyles";
 import { getPrismicClient } from '../../services/prismic';
 import { GetStaticProps } from 'next';
 import Prismic from '@prismicio/client';
+import Head from "next/head";
 
 interface IProjeto {
     slug: string;
@@ -24,6 +25,21 @@ export default function Projetos({ projetos }: ProjetoProps) {
     return (
         <ProjetoContainer >
              
+        <Head>
+        <title>Portfolio | i-Portfólio</title>
+        <meta
+          name="description"
+          content="Estou evoluindo como desencolvedor Front-end, e aqui exponho alguns projetos que desenvolvi durante essa jornada mágica!"
+        />
+        <meta property="og:image" content="./public/ogimage.png" />
+        <meta property="og:image:secure_url" content="./public/ogimage.png" />
+        <meta name="twitter:image" content="./public/ogimage.png" />
+        <meta name="twitter:image:src" content="./public/ogimage.png" />
+        <meta
+          property="og:description"
+          content="Estou evoluindo como desencolvedor Front-end, e aqui exponho alguns projetos que desenvolvi durante essa jornada mágica!"
+        />
+      </Head>
             <Header />
             <main className="container">
               {projetos.map(projeto => (

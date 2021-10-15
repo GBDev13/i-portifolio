@@ -20,6 +20,7 @@ export const Container = styled.div<ContainerProps>`
         transition: 0.5s;
         cursor: pointer;
         overflow: hidden;
+        border: 2px solid red;
 
         &:hover {
             border-color: ${({ theme }) => theme.primary};

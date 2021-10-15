@@ -7,6 +7,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Prismic from '@prismicio/client';
 import { useRouter } from 'next/router';
 import LoadingScreen from '../../../components/LoadingScreen';
+import Head from 'next/head';
  
 interface IProjeto {
     slug: string;
@@ -30,6 +31,18 @@ export default function Projeto({projeto}: ProjetoProps ) {
     }
     return (
         <ProjetoContainer>
+            <Head>
+                <title>{projeto.title} | i-Portfólio</title>
+                <meta name="description" content={projeto.description} />
+                <meta property="og:image" content={projeto.thumbnail} />
+                <meta property="og:image:secure_url" content={projeto.thumbnail} />
+                <meta name="twitter:image" content={projeto.thumbnail} />
+                <meta name="twitter:image:src" content={projeto.thumbnail} />
+                <meta
+                property="og:description"
+                content="Estou evoluindo como desencolvedor Front-end, e aqui exponho alguns projetos que desenvolvi durante essa jornada mágica!"
+                />
+            </Head>
             <Header />
             <BannerProjeto
                title={projeto.title} 
@@ -72,8 +85,6 @@ export const getStaticProps: GetStaticProps = async context  => {
     const { slug } = context.params;
 
     const response = await prismic.getByUID('iportfoli', String(slug), {})
-
-    console.log(response)
     
     const projeto = {
         slug: response.uid,
