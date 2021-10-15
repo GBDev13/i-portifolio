@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../components/Header";
 import ProjetoItem from "../../components/ProjetoItem";
-import { ProjetosContainer } from "../../styles/ProjetosStyles";
+import { ProjetoContainer } from "../../styles/ProjetoStyles";
 
 import { getPrismicClient } from '../../services/prismic';
 import { GetStaticProps } from 'next';
@@ -22,7 +22,8 @@ interface ProjetoProps {
 
 export default function Projetos({ projetos }: ProjetoProps) {
     return (
-        <ProjetosContainer >
+        <ProjetoContainer >
+             
             <Header />
             <main className="container">
               {projetos.map(projeto => (
@@ -36,7 +37,7 @@ export default function Projetos({ projetos }: ProjetoProps) {
               ))}
             </main>
             
-        </ProjetosContainer>
+        </ProjetoContainer>
     )
 }
 
@@ -55,7 +56,7 @@ export const getStaticProps: GetStaticProps = async () => {
     type: projeto.data.type,
     description: projeto.data.description,
     link: projeto.data.link?.url,
-    thumbnail: projeto.data.thumbnail.url
+    thumbnail: projeto.data.thumbnail?.url
   }));
   return {
     props: {
